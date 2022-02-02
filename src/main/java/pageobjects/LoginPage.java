@@ -10,6 +10,32 @@ public class LoginPage {
     public LoginPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
     }
+    
+    // new code
+    
+    @FindBy(id = "email")
+    private WebElement userName;
+	@FindBy(id = "password")
+	private WebElement userPassword;
+	@FindBy(id = "submit-button")
+	private WebElement submit;
+	
+	public void login(String username, String Password) {
+		userName.sendKeys(username);
+		userPassword.sendKeys(Password);
+		submit.click();
+	}
+	
+	public boolean LoginPageIsDisplayed() {
+		userName.isDisplayed();
+		userPassword.isDisplayed();
+		submit.isDisplayed();
+        return true;
+    }
+	
+	
+	
+	//Old code
 
     @FindBy(className = "bt-split-screen__header")
     private WebElement loginHeaderTitle;

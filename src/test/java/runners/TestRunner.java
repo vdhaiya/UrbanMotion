@@ -9,6 +9,7 @@ import org.testng.annotations.DataProvider;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepdefinitions",
+        tags = "@AceLogin",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty",

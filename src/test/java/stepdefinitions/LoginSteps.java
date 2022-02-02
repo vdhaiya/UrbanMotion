@@ -4,6 +4,7 @@ import pageobjects.LoginPage;
 import utilities.TestContext;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 
@@ -19,7 +20,13 @@ public class LoginSteps {
         testContext = context;
         loginPage = testContext.getPageObjectManager().getLoginPage();
     }
-
+    @Given("User login to Ace App with username {string} and password {string}")
+    public void user_login_to_ace_app_with_username_and_password(String string, String string2) {
+        // Write code here that turns the phrase above into concrete actions
+    	loginPage.login(string, string2);
+     //   throw new io.cucumber.java.PendingException();
+    }
+    
     @Then("Login page is displayed")
     public void loginPageIsDisplayed() {
         Assert.assertTrue(loginPage.emailLoginPageIsDisplayed());
