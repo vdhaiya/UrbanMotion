@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import utilities.WebdriverHelper;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -12,22 +13,27 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
-
+ 
 public class NewAutoCreationPage {
-
+	 public WebDriver driver;
+	public NewAutoCreationPage(WebDriver webDriver) {
+        this.driver = webDriver;
+    }
+	/* COmmenting pagefactory method 
     public NewAutoCreationPage(WebDriver webDriver) {
         PageFactory.initElements(new AjaxElementLocatorFactory(webDriver, 15), this);
     }
-  
+ //   WebdriverHelper helper = new WebdriverHelper();
 	//private String titleAutos = "infraction-title";
     private String createNewProcessPageTitle = "//h2[@id='IF']";
 	private String authorizationEntity = "//div[@id='infractor-0']//label[@id='label-0']/following-sibling:: div";
 
+	
    // PROCESS OBJECTS
     @FindBy(xpath = "//div[@id='tree-select-infractor-0']//input[@type='text']")
     private WebElement authorizingentity;
 
-    @FindBy(id ="infractor-1")
+    @FindBy(xpath ="//input[@id='infractor-1']")
     private WebElement auto;
 
     @FindBy(id = "infractor-2")
@@ -155,19 +161,42 @@ public class NewAutoCreationPage {
     @FindBy(id = "no-button-undefined")
     private WebElement confirmNo;
     
-    
+    */
     
     public void createNewMinuta() throws InterruptedException {
-    	
-    	
     	Thread.sleep(3000);
+    	
+    	WebElement nextButton = driver.findElement(By.xpath("//div[@id='tree-select-vehicle-1']//input[@type='text']"));
+    	JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		jsExecutor.executeScript("arguments[0].scrollIntoView();", nextButton);
+		Thread.sleep(6000);
+		
+		//JavascriptExecutor jsExecutor = (JavascriptExecutor) driver.getDriver();
+		//jsExecutor.executeScript("arguments[0].value='valuetofill'", element);
+    
+    /*	Thread.sleep(3000);
+    	
+    	//////Minuta Creation Process 
     	authorizingentity.sendKeys("Polícia Municipal");
-    	authorizingentity.click();
+    	authorizingentity.sendKeys(Keys.ENTER);
+    	authorizingentity.sendKeys(Keys.TAB);
+    	Thread.sleep(3000);
+    	auto.click();
     	Thread.sleep(3000);
     	auto.sendKeys("975236796");
+    	auto.sendKeys(Keys.ENTER);
+    	auto.sendKeys(Keys.TAB);
     	Thread.sleep(3000);
-    	andthe.sendKeys("907571236");
-    	Thread.sleep(3000);
+    	andthe.click();
+    	andthe.sendKeys(Keys.TAB);
+    	
+    	
+    	rulesinfringed.sendKeys(Keys.ENTER);
+    	rulesinfringed.sendKeys(Keys.TAB);
+    	minimumfine.sendKeys(Keys.TAB);
+    	maxfine.sendKeys(Keys.TAB); */
+    	//andthe.sendKeys("907571236");
+    	//Thread.sleep(3000);
     //	DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
     //	   LocalDateTime now = LocalDateTime.now();  
     /*	datetime.sendKeys("2022-02-01 05:00");
